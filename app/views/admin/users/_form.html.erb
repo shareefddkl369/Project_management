@@ -1,0 +1,24 @@
+<h2>Sign up</h2>
+
+<%= form_for @user,:url =>admin_users_path do |f| %>
+
+  <div><%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :autofocus => true %></div>
+
+  <div><%= f.label :last_name %><br />
+    <%= f.text_field :last_name %></div>
+
+<div><%= f.label :role %><br />
+    <%= f.select :role,[["Test Leader","Test Leader"],["Tester","Tester"],["Requirement Leader","Requirement Leader"]] %></div>
+
+  <div><%= f.label :email %><br />
+    <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %><br />
+    <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
