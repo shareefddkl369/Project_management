@@ -1,0 +1,17 @@
+<div>
+  <table cellpadding="9">
+    <tr>
+      <td>User Name:</td><td><%= @user.full_name.capitalize %></td>
+    </tr>
+    <tr>
+      <td>Email:</td><td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>Role:</td><td><%= @user.role.capitalize %></td>
+    </tr>
+    <tr>
+      <td>Created At:</td><td><%= @user.created_at.strftime("%d/%b/%Y") %></td>
+    </tr>
+  </table>
+  
+</div>

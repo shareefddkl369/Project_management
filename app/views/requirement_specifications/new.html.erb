@@ -1,0 +1,16 @@
+<div>
+  Create Requirement Specifications:
+</div>
+<div style="margin-top: 10px;">
+  <%= form_for @requirement_specification,:url =>project_requirement_specifications_path(:project_id =>@project),:method =>"POST" do |f| %>
+    <%= f.hidden_field :user_id,:value=>current_user.id %>
+    <%= f.hidden_field :project_id,:value =>@project %>
+    <div>
+      <%= f.text_field :title,:placeholder =>"Title" %>
+    </div>
+    <div>
+      <%= f.text_area :description,:placeholder =>"Description",:onclick=>"make_style_pattern(this)",:class=>"textarea_style" %>
+    </div>
+    <%= f.submit "Save" %>
+  <%end%>
+</div>

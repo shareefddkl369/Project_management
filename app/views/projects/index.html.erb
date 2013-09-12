@@ -1,0 +1,31 @@
+<table cellpadding="0" id="users_list" width="100%">
+  <tr class="table_heading">
+    <td>S.No</td><td>Name</td><td>User Name</td><td>Description</td><td>Actions</td><td>Create</td>
+  </tr>
+  <% @projects.each_with_index do |p,i| %>
+    <tr class="<%= cycle("treven","trodd") %>">
+      <td valign="top"><%= i+1 %></td>
+      <td valign="top"><%= p.name %></td>
+      <td valign="top"><%= p.user.full_name %></td>
+      <td valign="top"><pre><%= p.description %></pre></td>
+                <td valign="top"><%= link_to image_tag("/assets/edit_profile_button.png"),edit_project_path(p.id) %> <%= link_to image_tag("/assets/delete2.png"),project_path(p.id),:method =>:delete,:confirm=>"Are you sure you want to delete user?" %></td>
+          <td valign="top">
+        <%if current_user.role=="admin"%>
+          <%= link_to "Requirement_specification", new_project_requirement_specification_path(:project_id=>p.id)%><br/>
+          <%= link_to "Test_specification","" %><br/>
+          <%= link_to "Test_plans","" %>
+        <%elsif current_user.role=="Test Leader"%>
+          <%= link_to "Test_plans","" %>
+          <%= link_to "Test_cases","" %>
+          <%= link_to "Test_suites","" %>
+        <%elsif current_user.role=="Tester"%>
+          <%= link_to "Test_cases","" %>
+        <%elsif current_user.role=="Requirement Leader"%>
+          <%= link_to "Requirement_specification", new_project_requirement_specification_path(:project_id=>p.id)%><br/>
+
+        <%end%>
+          </td>    
+          </tr>
+  <% end %>
+  <tr class="last_row"><td colspan="7"></td></tr>
+</table>

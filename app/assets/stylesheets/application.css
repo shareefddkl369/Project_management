@@ -28,10 +28,10 @@
 }
 .table_heading{background:#d7d9d9;color:#4d4e4f;font-weight:bold;font-size:15px;border:1px solid #bfbfc0;}
 .table_heading th{padding:10px 5px;
-                 border-top:1px solid #bfbfc0;
-                 text-align:left;
-                 font-size:14px;
-                 font-weight:regular;
+                  border-top:1px solid #bfbfc0;
+                  text-align:left;
+                  font-size:14px;
+                  font-weight:regular;
 }
 .trodd{background-color:#ffffff;color:#4d4e4f;font-size:13px;padding-left:5px;}
 .treven{background-color:#eeeeee;color:#4d4e4f;font-size:13px;padding-left:5px;}
@@ -40,3 +40,7 @@
 tr.last_row{background:#d7d9d9;text-align:center;}
 tr.last_row td{text-align:center;font-weight:bold;font-size:13px;border:1px solid #bfbfc0;}
 tr.last_row td a{color:#434243;} 
+.textarea_style{
+    height: 193px;
+    width: 533px;
+}

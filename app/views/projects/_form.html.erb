@@ -1,0 +1,12 @@
+<div style="margin-top: 10px;">
+  <%= form_for @project do |f| %>
+    <%= f.hidden_field :user_id,:value=>current_user.id %>
+    <div>
+      <%= f.text_field :name,:placeholder =>"Title" %>
+    </div>
+    <div>
+      <%= f.text_area :description,:placeholder =>"Description",:onclick=>"make_style_pattern(this)",:class=>"textarea_style" %>
+    </div>
+    <%= f.submit "Save" %>
+  <%end%>
+</div>

@@ -11,7 +11,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130906131434) do
+ActiveRecord::Schema.define(version: 20130911101837) do
+
+  create_table "projects", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "requirement_specifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "requirements", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "requirement_specification_id"
+    t.string   "type"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_cases", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "test_plan_id"
+    t.integer  "requirement_id"
+    t.string   "type"
+    t.string   "title"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_plans", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_specifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_suites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "test_plan_id"
+    t.integer  "requirement_id"
+    t.string   "type"
+    t.string   "title"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

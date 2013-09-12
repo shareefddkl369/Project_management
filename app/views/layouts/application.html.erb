@@ -38,7 +38,7 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js","application","jquery","jquery.jqtransform","jquery.ui.widget","jquery.selectBoxIt","jquery.elastic.source","cloud-carousel.1.0.5"%>
   </head>
   <body>
 
@@ -54,11 +54,16 @@
           <div class="container nav-collapse">
             <ul class="nav" style="float:right;">
               <% if current_user %>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Create Users", new_admin_user_path  %></li>
+                <% if current_user.role == "admin" %>
+                  <li><%= link_to "Users", admin_users_url  %></li>
+                  <li><%= link_to "Projects", projects_url  %></li>
+                <%elsif current_user.role == "Test Leader"%>   
+                  <li><%= link_to "Projects", projects_url  %></li>
+
+                <%end%> 
                 <li><%= link_to "signout",destroy_user_session_path(current_user),:method => 'delete'  %></li>
               <% else %>
-                
+
                 <li><%= link_to "sign in",new_user_session_path  %></li>
               <% end %>
             </ul>
@@ -74,19 +79,20 @@
           <%= yield %>
         </div>
         <%  if current_user %>
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <% if current_user.role == "admin"%>
-              <li><%= link_to "Create Projects  ", "/path1"  %></li>
-              <li><%= link_to "Create Requirement Specifications", "/path2"  %></li>
-              <li><%= link_to "Create Test Cases", "/path3"  %></li>
-            <%end%>
-            </ul>
-          </div><!--/.well -->
-        </div>
+          <div class="span3">
+            <div class="well sidebar-nav">
+              <h3>Sidebar</h3>
+              <ul class="nav nav-list">
+                <li class="nav-header">Sidebar</li>
+                <% if current_user.role == "admin"%>
+                  <li><%= link_to "Create Users ", new_admin_user_path  %></li>
+                  <li><%= link_to "Create Projects  ", new_project_path  %></li>
+                <%elsif current_user.role == "Test Leader"%>
+                  <li><%= link_to "Create Projects  ", new_project_path  %></li>
+                <%end%>
+              </ul>
+            </div><!--/.well -->
+          </div>
         <% end %>
         <!--/span-->
       </div><!--/row-->

@@ -1,0 +1,19 @@
+<table cellpadding="0" id="users_list" width="100%">
+  <tr class="table_heading">
+    <td>S.No</td><td>Name</td><td>Project Name</td><td>User Name</td><td>Description</td><td>Actions</td><td>Create</td>
+  </tr>
+  <% @requirement_specifications.each_with_index do |p,i| %>
+    <tr class="<%= cycle("treven","trodd") %>">
+      <td valign="top"><%= i+1 %></td>
+      <td valign="top"><%= p.title %></td>
+       <td valign="top"><%= p.project.name %></td>
+      <td valign="top"><%= p.user.full_name %></td>
+      <td valign="top"><pre><%= p.description %></pre></td>
+      <td valign="top"><%= link_to image_tag("/assets/edit_profile_button.png"),"" %> <%= link_to image_tag("/assets/delete2.png"),"" %></td>
+<td valign="top"><%= link_to "Test_specification","" %><br/>
+<%= link_to "Test_plans","" %>
+</td>    
+</tr>
+  <% end %>
+  <tr class="last_row"><td colspan="7"></td></tr>
+</table>

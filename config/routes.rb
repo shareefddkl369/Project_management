@@ -1,10 +1,26 @@
 ProjectManagement::Application.routes.draw do
+  get "test_suites/new"
+  get "test_cases/new"
+  get "test_plans/new"
+  get "test_specifications/new"
+  get "projects/index"
   get "welcome/index"
-  devise_for :users
+  devise_for :users,
+    :controllers =>{
+    :session =>"sessions"
+    }
   
   root :to => "welcome#index"
   namespace :admin do
     resources :users
+  end
+  resources :projects do
+    resources :requirement_specifications
+    resources :test_specifications
+    resources :test_plans do
+      resources :test_cases
+      resources :tes_suites
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
